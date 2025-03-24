@@ -3,6 +3,11 @@ definePageMeta({
     middleware: [],
     layout: 'empty',
 });
+
+const user = useSanctumUser();
+
+const { logout, isAuthenticated } = useSanctumAuth();
+
 </script>
 
 <template>
@@ -22,8 +27,12 @@ definePageMeta({
             <NuxtLink to="#" class="text-gray-900 font-semibold hover:text-black hover:border-b-2 hover:border-gray-900 py-2">Contact Us</NuxtLink>
         </nav>
         
-        <div>
-            <button class="bg-blue-600 text-white font-semibold px-4 py-2 rounded-3xl hover:cursor-pointer hover:bg-blue-500">Login</button>
+        <div v-if="isAuthenticated">
+            <NuxtLink to="#" class="text-gray-900 font-semibold px-4 py-2">{{ user.name }}</NuxtLink>
+            <button v-on:click="logout">Logout</button>
+        </div>
+        <div v-else>
+            <NuxtLink to="auth/login" class="bg-blue-600 text-white font-semibold px-4 py-2 rounded-3xl hover:cursor-pointer hover:bg-blue-500">Login</NuxtLink>
             <button class="ml-3 border border-blue-600 text-blue-600 hover:text-blue-500 hover:border-blue-500 font-semibold px-4 py-2 rounded-3xl hover:cursor-pointer">Sign Up</button>
         </div>
     </header>
@@ -77,6 +86,8 @@ definePageMeta({
             </div>
         </div>
     </section>
+
+    <section class="bg-gray-100 h-[400px] mt-20"></section>
   </div>
 </template>
 
