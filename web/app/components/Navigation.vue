@@ -4,6 +4,8 @@ import type { LaravelUser } from '~~/types/LaravelUser';
 const { isAuthenticated, logout: logoutAction } = useSanctumAuth();
 const user = useSanctumUser<LaravelUser>();
 
+const managesProfilePhotos = false
+
 const logout = async () => {
     await logoutAction()
 }
@@ -20,21 +22,56 @@ const logout = async () => {
             About</NuxtLink>
         <NuxtLink to="#"
             class="text-gray-900 font-semibold hover:text-black hover:border-b-2 hover:border-gray-900 py-2">
-            Services</NuxtLink>
+            Solutions</NuxtLink>
+        <NuxtLink to="#"
+            class="text-gray-900 font-semibold hover:text-black hover:border-b-2 hover:border-gray-900 py-2">
+            Pricing</NuxtLink>
         <NuxtLink to="#"
             class="text-gray-900 font-semibold hover:text-black hover:border-b-2 hover:border-gray-900 py-2">
             Blog</NuxtLink>
-        <NuxtLink to="#"
-            class="text-gray-900 font-semibold hover:text-black hover:border-b-2 hover:border-gray-900 py-2">
-            Resources</NuxtLink>
         <NuxtLink to="#"
             class="text-gray-900 font-semibold hover:text-black hover:border-b-2 hover:border-gray-900 py-2">
             Contact Us</NuxtLink>
     </nav>
 
     <div v-if="isAuthenticated">
-        <NuxtLink to="#" class="text-gray-900 font-semibold px-4 py-2">{{ user?.name }}</NuxtLink>
-        <button v-on:click="logout">Logout</button>
+        <Dropdown align="right" width="48">
+            <template #trigger>
+                <button v-if="managesProfilePhotos"
+                    class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                    <!-- <img class="h-8 w-8 rounded-full object-cover" :src="profile_photo_url"
+                        :alt="user?.name || profile_photo_url" /> -->
+                </button>
+
+                <span v-else class="inline-flex rounded-md">
+                    <button type="button"
+                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-900 bg-white  hover:text-gray-700  focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                        {{ user?.name }}
+
+                        <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </button>
+                </span>
+            </template>
+
+            <template #content>
+                <!-- Account Management -->
+                <div class="block px-4 py-2 text-xs text-gray-900">Manage Account</div>
+
+                <DropdownLink href="/profile"> Profile </DropdownLink>
+
+                <div class="border-t border-gray-200 dark:border-gray-600" />
+
+                <!-- Authentication -->
+                <form @submit.prevent="logout">
+                    <DropdownLink as="button" v-on:click="logout"> Log Out </DropdownLink>
+                </form>
+            </template>
+        </Dropdown>
+        <!-- <NuxtLink to="#" class="text-gray-900 font-semibold px-4 py-2"></NuxtLink>
+        <button>Logout</button> -->
     </div>
 
     <div v-else class="space-x-2">
