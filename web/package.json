@@ -10,9 +10,8 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/icon": "1.11.0",
     "@nuxtjs/tailwindcss": "6.13.2",
-    "nuxt": "^3.11.2",
+    "nuxt": "^3.16.1",
     "nuxt-auth-sanctum": "0.6.0",
     "vue": "^3.4.27",
     "vue-router": "^4.3.2"
