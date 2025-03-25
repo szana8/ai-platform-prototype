@@ -35,7 +35,7 @@ const logout = async () => {
     </nav>
 
     <div v-if="isAuthenticated">
-        <NavigationDropdown align="right" width="48">
+        <Dropdown align="right" width="48">
             <template #trigger>
                 <button v-if="managesProfilePhotos"
                     class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
@@ -59,17 +59,15 @@ const logout = async () => {
             <template #content>
                 <!-- Account Management -->
                 <div class="block px-4 py-2 text-xs text-gray-900">Manage Account</div>
-
-                <NavigationDropdownLink href="/profile"> Profile </NavigationDropdownLink>
-
+                    <DropdownLink href="/profile"> Profile </DropdownLink>
                 <div class="border-t border-gray-200 dark:border-gray-600" />
 
                 <!-- Authentication -->
                 <form @submit.prevent="logout">
-                    <NavigationDropdownLink as="button" v-on:click="logout"> Log Out </NavigationDropdownLink>
+                    <DropdownLink as="button" v-on:click="logout"> Log Out </DropdownLink>
                 </form>
             </template>
-        </NavigationDropdown>
+        </Dropdown>
     </div>
 
     <div v-else class="space-x-2">
