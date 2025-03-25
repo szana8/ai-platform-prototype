@@ -87,6 +87,25 @@ services:
         networks:
             - app-network
 
+    langflow:
+        image: langflowai/langflow:latest
+        #pull_policy: always
+        ports:
+            - "7860:7860"
+        depends_on:
+            - postgres
+        environment:
+            - LANGFLOW_DATABASE_URL=postgresql://ai-platform:ai-platform@postgres:5432/langflow
+            # This variable defines where the logs, file storage, monitor data and secret keys are stored.
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        env_file:
+            - ./.env
+        volumes:
+            - ./.langflow-data:/app/langflow
+        networks:
+            - app-network
+
 
 #Docker Networks
 networks:

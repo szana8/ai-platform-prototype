@@ -11,6 +11,7 @@ export default defineNuxtConfig({
       redirect: {
         onLogin: '/dashboard',
         onAuthOnly: 'auth/login'
-      }
+      },
+      logLevel: 5,
   },
 })

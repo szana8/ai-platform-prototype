@@ -8,6 +8,6 @@ useHead({
 
 <template>
   <NuxtLayout>
-    <NuxtPage class="bg-white h-screen" />
+    <NuxtPage class="bg-white h-screen dark:bg-gray-700 dark:text-white" />
   </NuxtLayout>
 </template>
