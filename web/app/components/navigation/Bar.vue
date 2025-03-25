@@ -35,7 +35,7 @@ const logout = async () => {
     </nav>
 
     <div v-if="isAuthenticated">
-        <Dropdown align="right" width="48">
+        <NavigationDropdown align="right" width="48">
             <template #trigger>
                 <button v-if="managesProfilePhotos"
                     class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
@@ -60,18 +60,16 @@ const logout = async () => {
                 <!-- Account Management -->
                 <div class="block px-4 py-2 text-xs text-gray-900">Manage Account</div>
 
-                <DropdownLink href="/profile"> Profile </DropdownLink>
+                <NavigationDropdownLink href="/profile"> Profile </NavigationDropdownLink>
 
                 <div class="border-t border-gray-200 dark:border-gray-600" />
 
                 <!-- Authentication -->
                 <form @submit.prevent="logout">
-                    <DropdownLink as="button" v-on:click="logout"> Log Out </DropdownLink>
+                    <NavigationDropdownLink as="button" v-on:click="logout"> Log Out </NavigationDropdownLink>
                 </form>
             </template>
-        </Dropdown>
-        <!-- <NuxtLink to="#" class="text-gray-900 font-semibold px-4 py-2"></NuxtLink>
-        <button>Logout</button> -->
+        </NavigationDropdown>
     </div>
 
     <div v-else class="space-x-2">
