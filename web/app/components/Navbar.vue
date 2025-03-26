@@ -59,9 +59,7 @@ const logout = async () => {
             <template #content>
                 <!-- Account Management -->
                 <div class="block px-4 py-2 text-xs text-gray-900">Manage Account</div>
-
-                <DropdownLink href="/profile"> Profile </DropdownLink>
-
+                <DropdownLink href="#"> Profile </DropdownLink>
                 <div class="border-t border-gray-200 dark:border-gray-600" />
 
                 <!-- Authentication -->
@@ -70,8 +68,6 @@ const logout = async () => {
                 </form>
             </template>
         </Dropdown>
-        <!-- <NuxtLink to="#" class="text-gray-900 font-semibold px-4 py-2"></NuxtLink>
-        <button>Logout</button> -->
     </div>
 
     <div v-else class="space-x-2">

@@ -3,6 +3,30 @@ definePageMeta({
     middleware: [],
     layout: 'empty',
 });
+
+const logos = [
+    { link: "https://ollama.com/public/og.png", alt: "Ollama" },
+    { link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3sdA9_gDl2IPpUpEghok54n12APcG_BgBKw&s", alt: "Open AI" },
+    { link: "https://seeklogo.com/images/W/whisper-logo-AA78E4A800-seeklogo.com.png", alt: "Whisper" },
+    { link: "https://miro.medium.com/v2/resize:fit:1044/1*d2XUNgrLw7687CDfXx9-Dw.png", alt: "Chroma DB" },
+    { link: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/DeepSeek_logo.svg/1024px-DeepSeek_logo.svg.png", alt: "Deepseek" },
+    { link: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Kubernetes_logo.svg/1200px-Kubernetes_logo.svg.png", alt: "Kubernetes" },
+
+    { link: "https://ollama.com/public/og.png", alt: "Ollama" },
+    { link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3sdA9_gDl2IPpUpEghok54n12APcG_BgBKw&s", alt: "Open AI" },
+    { link: "https://seeklogo.com/images/W/whisper-logo-AA78E4A800-seeklogo.com.png", alt: "Whisper" },
+    { link: "https://miro.medium.com/v2/resize:fit:1044/1*d2XUNgrLw7687CDfXx9-Dw.png", alt: "Chroma DB" },
+    { link: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/DeepSeek_logo.svg/1024px-DeepSeek_logo.svg.png", alt: "Deepseek" },
+    { link: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Kubernetes_logo.svg/1200px-Kubernetes_logo.svg.png", alt: "Kubernetes" },
+
+    { link: "https://ollama.com/public/og.png", alt: "Ollama" },
+    { link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3sdA9_gDl2IPpUpEghok54n12APcG_BgBKw&s", alt: "Open AI" },
+    { link: "https://seeklogo.com/images/W/whisper-logo-AA78E4A800-seeklogo.com.png", alt: "Whisper" },
+    { link: "https://miro.medium.com/v2/resize:fit:1044/1*d2XUNgrLw7687CDfXx9-Dw.png", alt: "Chroma DB" },
+    { link: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/DeepSeek_logo.svg/1024px-DeepSeek_logo.svg.png", alt: "Deepseek" },
+    { link: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Kubernetes_logo.svg/1200px-Kubernetes_logo.svg.png", alt: "Kubernetes" },
+]
+
 </script>
 
 <template>
@@ -10,7 +34,7 @@ definePageMeta({
         <div class="absolute inset-0 bg-grid-white/[0.2] pointer-events-none"></div> <!-- Grid overlay -->
 
         <header class="flex items-center justify-between py-4 px-5">
-            <Navigation />
+            <Navbar />
         </header>
 
         <!-- Hero Section -->
@@ -33,7 +57,7 @@ definePageMeta({
             </div>
         </section>
 
-        <BannerScrollingLogos />
+        <LogoScroller :logos="logos" />
 
 
         <section class="relative text-center w-full mx-auto flex  items-center">

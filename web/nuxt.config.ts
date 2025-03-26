@@ -4,12 +4,14 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-auth-sanctum'],
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-auth-sanctum', 'nuxt-highcharts'],
 
   sanctum: {
       baseUrl: 'http://localhost:8090',
       redirect: {
-        onAuthOnly: 'auth/login'
-      }
+        onLogin: '/dashboard',
+        onAuthOnly: '/auth/login'
+      },
+      logLevel: 5,
   },
 })
