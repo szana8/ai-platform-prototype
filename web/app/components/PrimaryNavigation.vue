@@ -8,7 +8,8 @@
         <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between py-3">
                 <!-- 1 -->
-                <TeamDropdown />
+                <div></div>
+                <!-- <TeamDropdown /> -->
 
                 <!-- End 1 -->
 

@@ -10,7 +10,7 @@ export default defineNuxtConfig({
       baseUrl: 'http://localhost:8090',
       redirect: {
         onLogin: '/dashboard',
-        onAuthOnly: 'auth/login'
+        onAuthOnly: '/auth/login'
       },
       logLevel: 5,
   },

@@ -1,40 +1,111 @@
 <script setup lang="ts">
-const prompt = reactive({
-    message: "",
-})
+import { ref } from 'vue';
 
-const messages = <any>[]
+const prompt = ref('');
+const messages = ref<Message[]>([]);
+const messagesContainer = ref<HTMLDivElement | null>(null);
 
-const submit = () => {
-    messages.push({ type: "User", text: prompt.message })
 
-    // Fake ai response
-    messages.push({ type: "AI", text: "Thanks for your response" })
+const submit = async () => {
+    if (prompt.value.trim() === '') return;
 
-    prompt.message = ""
-}
+    const userMessage = { text: prompt.value, sender: 'User' };
+    messages.value.push(userMessage);
+    const userInput = prompt.value;
+    prompt.value = '';
+
+    try {
+        const response = await fetch(
+            "http://localhost:7860/api/v1/run/1570a19c-f16a-445f-bc7c-8a10f369c80c?stream=true",
+            {
+                method: "POST",
+                headers: {
+                    //"Authorization": "Bearer <TOKEN>",
+                    "Content-Type": "application/json",
+                    //"x-api-key": "<your api key>"
+                },
+                body: JSON.stringify({
+                    input_value: userInput,
+                    output_type: "chat",
+                    input_type: "chat",
+                    tweaks: {
+                        "ChatInput-2d2PO": {},
+                        "Prompt-5p93M": {},
+                        "ChatOutput-aKJsa": {},
+                        "OllamaModel-xX8ui": {}
+                    }
+                })
+            }
+        );
+
+        if (!response.body) throw new Error("No response body");
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let botMessage = { text: '', sender: 'bot' };
+        messages.value.push(botMessage);
+
+        while (true) {
+            const { value, done } = await reader.read();
+            if (done) break;
+            const decodedText = decoder.decode(value, { stream: true });
+            const jsonChunks = decodedText.trim().split("\n");
+            console.log(jsonChunks)
+
+            for (const chunk of jsonChunks) {
+                try {
+                    const parsedData = JSON.parse(chunk);
+                    if (parsedData.event === "token" && parsedData.data?.chunk) {
+                        if (parsedData.data.chunk == "\n") {
+                            botMessage.text += "<br />";
+                        } else {
+                            botMessage.text += parsedData.data.chunk;
+                        }
+                        messages.value = [...messages.value]; // Trigger Vue reactivity
+                    }
+                } catch (e) {
+                    console.error("Error parsing JSON chunk:", e);
+                }
+            }
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        messages.value.push({ text: 'Error retrieving response.', sender: 'bot' });
+    }
+};
+
+// Watch for changes in messages to scroll to bottom
+watchEffect(() => {
+    nextTick(() => {
+        if (messagesContainer.value) {
+            messagesContainer.value.scrollTop = messagesContainer.value.scrollHeight;
+        }
+    });
+});
 </script>
 
 <template>
-    <div class="py-10 px-32 space-y-10 relative">
-        <div class="relative left-1/2 transform -translate-x-1/2 w-full max-w-2xl p-4 space-y-4">
-            <div class="space-y-2 overflow-y-auto ">
-                <div v-for="message in messages"
-                    :class="message.type === 'User' ? 'justify-end flex' : 'justify-start flex'">
-                    <div
-                        :class="message.type === 'User' ? 'bg-gray-400 text-gray-800 dark:text-gray-900 p-3 rounded-lg max-w-xs' : 'text-gray-800 dark:text-white p-3 rounded-lg max-w-xs'">
-                        <p>{{ message.text }}</p>
+    <div class="py-5 px-10 relative h-screen">
+        <div class="relative w-full space-y-4 h-4/6 max-h-4/6 overflow-auto">
+            <div class="w-3/6 mx-auto">
+                <div ref="messagesContainer" class="space-y-2 h-4/6 max-h-5/6 overflow-y-auto">
+                    <div v-for="message in messages" v-if="messages"
+                        :class="message.sender === 'User' ? 'justify-end flex' : 'justify-start flex'">
+                        <div :class="message.sender === 'User' ? 'bg-gray-100 text-gray-800 dark:text-gray-900 p-3 rounded-lg' : 'text-gray-800 dark:text-white p-3 rounded-lg'"
+                            v-html="message.text">
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
-        <div class="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-2xl px-4 py-8">
+        <div class="left-1/2 w-full h-2/6">
             <!-- Textarea Container -->
-            <div class="relative w-full">
+            <div class="relative max-w-3xl left-1/2 transform -translate-x-1/2">
                 <!-- The textarea itself -->
-                <textarea rows="4" v-model="prompt.message"
-                    class="w-full p-4 border-2 border-gray-300 rounded-lg shadow-lg focus:outline-none resize-none placeholder-gray-400 text-gray-800 dark:bg-gray-700 dark:text-white"
-                    placeholder="Type your message here..."></textarea>
+                <textarea rows="6" v-model="prompt"
+                    class="w-full mt-20 p-4 border-2 border-gray-300 rounded-lg shadow-lg focus:outline-none resize-none placeholder-gray-400 text-gray-800 dark:bg-gray-700 dark:text-white"
+                    @keyup.enter="submit" placeholder="Type a message..."></textarea>
 
                 <!-- Optional: You can add a submit button or other features here -->
                 <button v-on:click="submit"
@@ -48,5 +119,4 @@ const submit = () => {
             </div>
         </div>
     </div>
-
 </template>
