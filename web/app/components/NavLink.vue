@@ -1,7 +1,15 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+
 const props = defineProps({
     href: String,
-    active: Boolean,
+})
+
+const route = useRoute()
+
+const isActive = computed(() => {
+    return route.path.startsWith(props.href || '') // Ensures it remains active on child pages
 })
 
 const activeLink =
@@ -11,7 +19,7 @@ const inActiveLink =
 </script>
 
 <template>
-    <NuxtLink :href="href" :class="inActiveLink" :active-class="activeLink">
+    <NuxtLink :href="href" :class="isActive ? activeLink : inActiveLink">
         <slot />
     </NuxtLink>
 </template>
