@@ -20,7 +20,7 @@
                     <Sidebar class="overflow-hidden" />
                 </div>
                 <div
-                    class="w-11/12 overflow-hidden h-screen fixed right-0 bg-white dark:bg-gray-700 rounded-t-2xl border border-gray-100 dark:border-gray-700">
+                    class="w-11/12 overflow-hidden h-screen fixed right-0 bg-white dark:bg-gray-700 rounded-tl-2xl border border-gray-100 dark:border-gray-700">
                     <div class="p-4">
                         <slot class="overflow-auto" />
                     </div>

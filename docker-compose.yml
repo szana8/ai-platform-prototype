@@ -106,6 +106,20 @@ services:
         networks:
             - app-network
 
+    stable-diffusion-demo:
+        build:
+            context: ./stable-diffusion-demo
+        container_name: stable-diffusion-demo
+        ports:
+            - "8070:8000"
+        volumes:
+            - ./.stable-diff-output:/output
+        environment:
+            - MODEL_ID=apple/coreml-stable-diffusion-v1-5
+            - PYTORCH_ENABLE_MPS_FALLBACK=1
+        restart: unless-stopped
+        networks:
+            - app-network
 
 #Docker Networks
 networks:

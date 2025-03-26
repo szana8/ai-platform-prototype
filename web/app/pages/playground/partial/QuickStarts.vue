@@ -19,7 +19,8 @@ import QuickStartCard from '../components/QuickStartCard.vue';
                 </QuickStartCard>
 
                 <QuickStartCard :title="'Generic Q&A chatbot'"
-                    :description="'Upload your dataset and ask question about it'">
+                    :description="'Upload your dataset and ask question about it'"
+                    :route="'playground/flows/generic-chatbot'">
                     <template v-slot:icon>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6">
