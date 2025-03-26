@@ -42,7 +42,8 @@ const logos = [
             class="relative text-center w-full mx-auto bg-[url('/assets/banner.png')] bg-cover flex h-[800px] items-center">
             <div class="container mx-auto">
                 <div class="w-1/3 text-left space-y-4">
-                    <div class="text-6xl font-bold">Best in class AI-powered Platform for App Personalization</div>
+                    <div class="text-6xl font-bold dark:text-gray-700">Best in class AI-powered Platform for App
+                        Personalization</div>
                     <div class="text-lg text-gray-500">Deliver personalized offers to your users by leveraging our
                         AI-powered Platform as a Service for the most important monetization use cases.</div>
                     <button
@@ -79,6 +80,6 @@ const logos = [
             </div>
         </section>
 
-        <section class="bg-gray-100 h-[400px] mt-20"></section>
+        <section class="bg-gray-100 h-[400px] mt-20 dark:bg-transparent"></section>
     </div>
 </template>

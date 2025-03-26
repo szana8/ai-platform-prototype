@@ -89,16 +89,15 @@ const streamResponse = async (response: any, botMessage: any) => {
         langflow_url += "?stream=true"
       }
 
-      const response = await fetch(langflow_url, fetchOptions);
+      const response = await useSanctumFetch(langflow_url, fetchOptions);
 
-      if (!response.body) throw new Error("No response body");
+      if (!response.data) throw new Error("No response body");
 
       let botMessage: Message = { text: '', sender: 'bot' };
       messages.value.push(botMessage);
 
       if (options.stream === false) {
-        const responseData = await response.json();
-        
+        const responseData = await response.data.value;
         botMessage.text = responseData.outputs[0].outputs[0].results.message.text.replace(/\n/g, '<br>') || 'No response received.';
         
         botMessage.text = formatCodeBlocks(botMessage.text);
@@ -108,7 +107,6 @@ const streamResponse = async (response: any, botMessage: any) => {
     } catch (fetchError) {
       console.error('Error:', fetchError);
       error.value = 'Error retrieving response.';
-      messages.value.push({ text: error.value, sender: 'bot' });
     } finally {
       isLoading.value = false;
     }
