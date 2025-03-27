@@ -38,7 +38,7 @@ const submit = async () => {
 </script>
 
 <template>
-    <div class="py-5 px-10 relative h-screen">
+    <div class="px-10 relative h-screen">
         <div class="relative w-full space-y-4 h-4/6 max-h-4/6 overflow-auto">
             <div class="w-3/6 mx-auto">
                 <div ref="messagesContainer" class="space-y-2 h-4/6 max-h-5/6 overflow-y-auto">
@@ -63,7 +63,7 @@ const submit = async () => {
             </div>
         </div>
         <div class="left-1/2 w-full h-2/6">
-            <div class="relative max-w-3xl left-1/2 transform -translate-x-1/2">
+            <div class="relative max-w-3xl left-1/2 transform -translate-x-1/2 bottom-16">
                 <textarea rows="6" v-model="prompt" :disabled="isLoading"
                     class="w-full mt-20 p-4 border-2 border-gray-300 rounded-lg shadow-lg focus:outline-none resize-none placeholder-gray-400 text-gray-800 dark:bg-gray-700 dark:text-white"
                     @keyup.enter="submit" placeholder="Type a message..."></textarea>
@@ -72,7 +72,7 @@ const submit = async () => {
                         <div class="flex space-x-5 items-center">
                             <div>
                                 <label class="inline-flex items-center cursor-pointer">
-                                    <span class="mr-2 text-xs">Stream</span>
+                                    <span class="mr-2 text-xs text-gray-600">Stream</span>
                                     <input type="checkbox" v-model="isStreamEnabled" class="sr-only peer">
                                     <div
                                         class="relative w-8 h-4 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-4 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-green-600">
@@ -81,7 +81,7 @@ const submit = async () => {
                             </div>
                             <div>
                                 <button
-                                    class="flex space-x-1 text-xs border border-gray-200 text-gray-200 px-2 py-1.5 rounded-2xl dark:hover:bg-gray-300 dark:hover:text-gray-700">
+                                    class="flex space-x-1 text-xs border border-gray-200 text-gray-600 px-2 py-1.5 rounded-2xl dark:hover:bg-gray-300 dark:hover:text-gray-700 hover:bg-gray-100">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="size-4">
                                         <path stroke-linecap="round" stroke-linejoin="round"

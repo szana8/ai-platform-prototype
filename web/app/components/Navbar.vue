@@ -72,10 +72,10 @@ const logout = async () => {
 
     <div v-else class="space-x-2">
         <NuxtLink to="auth/login"
-            class="text-white font-semibold px-4 py-2 rounded-3xl hover:cursor-pointer border border-transparent hover:border-gray-100">
+            class="text-gray-900 font-semibold px-4 py-2 rounded-3xl hover:cursor-pointer border border-transparent dark:hover:border-gray-100 hover:border-gray-900">
             Login</NuxtLink>
         <NuxtLink to="auth/register"
-            class="text-white font-semibold px-4 py-2 rounded-3xl hover:cursor-pointer border border-transparent hover:border-gray-100">
+            class="text-gray-900 font-semibold px-4 py-2 rounded-3xl hover:cursor-pointer border border-transparent dark:hover:border-gray-100 hover:border-gray-900">
             Sign
             Up</NuxtLink>
     </div>
