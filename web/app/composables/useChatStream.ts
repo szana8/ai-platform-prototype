@@ -24,7 +24,7 @@ export function useChatStream(defaultOptions: ChatStreamOptions) {
   };
 
 const streamResponse = async (response: any, botMessage: any) => {
-  const reader = response.body.getReader();
+  const reader = response.data.value.getReader();
   const decoder = new TextDecoder();
 
   while (true) {
