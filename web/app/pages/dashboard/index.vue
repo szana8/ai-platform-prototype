@@ -24,16 +24,19 @@ const chartOptions2 = ref({
 </script>
 
 <template>
-    <div class="grid grid-cols-3 relative">
-        <highchart :options="chartOptions"
-            class="border border-gray-100 rounded-lg shadow-sm p-4 md:p-6 h-96 grayscale" />
-        <highchart :options="chartOptions2"
-            class="border border-gray-100 rounded-lg shadow-sm p-4 md:p-6 h-96 grayscale" />
-        <highchart :options="chartOptions"
-            class="border border-gray-100 rounded-lg shadow-sm p-4 md:p-6 h-96 grayscale" />
+    <div class="p-4">
+        <div class="grid grid-cols-3 relative">
+            <highchart :options="chartOptions"
+                class="border border-gray-100 rounded-lg shadow-sm p-4 md:p-6 h-96 grayscale" />
+            <highchart :options="chartOptions2"
+                class="border border-gray-100 rounded-lg shadow-sm p-4 md:p-6 h-96 grayscale" />
+            <highchart :options="chartOptions"
+                class="border border-gray-100 rounded-lg shadow-sm p-4 md:p-6 h-96 grayscale" />
+        </div>
+        <div class="grid grid-cols-1 relative">
+            <highchart :options="chartOptions"
+                class="border border-gray-100 rounded-lg shadow-sm p-4 md:p-6 h-96 grayscale" />
+        </div>
     </div>
-    <div class="grid grid-cols-1 relative">
-        <highchart :options="chartOptions"
-            class="border border-gray-100 rounded-lg shadow-sm p-4 md:p-6 h-96 grayscale" />
-    </div>
+
 </template>

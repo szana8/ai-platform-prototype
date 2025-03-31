@@ -11,6 +11,8 @@ export function useChatStream(defaultOptions: ChatStreamOptions) {
     // Regex to detect code blocks (```language or just ```)
     const codeBlockRegex = /```(\w*)\n([\s\S]*?)```/g;
 
+    console.log(codeBlockRegex)
+
     return text.replace(codeBlockRegex, (match, lang, code) => {
       // Trim the code and escape HTML to prevent XSS
       const escapedCode = code.trim()
@@ -18,8 +20,10 @@ export function useChatStream(defaultOptions: ChatStreamOptions) {
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;');
 
+      console.log(escapedCode)
+
       // Return a formatted code block
-      return `<pre><code class="language-${lang || 'plaintext'}">${escapedCode}</code></pre>`;
+      return `<pre class="bg-gray-900 text-white font-mono p-4 border border-gray-800 rounded-lg whitespace-pre-wrap break-words"><code class="language-${lang || 'plaintext'}">${escapedCode}</code></pre>`;
     });
   };
 
@@ -33,8 +37,6 @@ const streamResponse = async (response: any, botMessage: any) => {
 
     const decodedText = decoder.decode(value, { stream: true });
     const jsonChunks = decodedText.trim().split("\n");
-
-    console.log("JSON Chunk: ", jsonChunks)
 
     for (const chunk of jsonChunks) {
       try {
@@ -58,13 +60,14 @@ const streamResponse = async (response: any, botMessage: any) => {
   }
 }
 
-  const sendMessage = async (userInput: string, customOptions?: Partial<ChatStreamOptions>) => {
+  const sendMessage = async (userInput: string, customOptions?: Partial<ChatStreamOptions>, tweaks?: Record<string, string>) => {
+
     const options: ChatStreamOptions = {
       ...defaultOptions,
       ...customOptions
     };
 
-    const userMessage: Message = { text: userInput, sender: 'User' };
+    const userMessage: Message = { text: userInput, sender: 'User', imageUrl: null };
     messages.value.push(userMessage);
 
     error.value = null;
@@ -80,7 +83,8 @@ const streamResponse = async (response: any, botMessage: any) => {
         body: JSON.stringify({
           input_value: userInput,
           output_type: "chat",
-          input_type: "chat"
+          input_type: "chat",
+          tweaks: tweaks
         })
       };
 
@@ -93,14 +97,31 @@ const streamResponse = async (response: any, botMessage: any) => {
 
       if (!response.data) throw new Error("No response body");
 
-      let botMessage: Message = { text: '', sender: 'bot' };
+      let botMessage: Message = { text: '', sender: 'bot', imageUrl: null };
       messages.value.push(botMessage);
 
       if (options.stream === false) {
-        const responseData = await response.data.value;
-        botMessage.text = responseData.outputs[0].outputs[0].results.message.text.replace(/\n/g, '<br>') || 'No response received.';
-        
+        const responseData: any = await response.data.value;
+        botMessage.text = responseData.outputs[0].outputs[0].results.message.text || 'No response received.';
+
         botMessage.text = formatCodeBlocks(botMessage.text);
+        botMessage.text.replace(/\n/g, '<br>')
+
+        const contentBlocks = responseData.outputs[0].outputs[0].results.message.content_blocks;
+        if (Array.isArray(contentBlocks)) {
+          const mediaBlock = contentBlocks.find(block => 
+            Array.isArray(block.contents) &&
+            block.contents.some((content: { type: string; urls: string | any[]; }) => content.type === 'media' && Array.isArray(content.urls) && content.urls.length > 0)
+          );
+        
+          if (mediaBlock) {
+            const mediaContent = mediaBlock.contents.find((content: { type: string; }) => content.type === 'media');
+            if (mediaContent && mediaContent.urls.length > 0) {
+              botMessage.imageUrl = "http://localhost:7860"+mediaContent.urls[0];
+              console.log("Media Image URL Found:", botMessage.imageUrl);
+            }
+          }
+        }
       } else {
           await streamResponse(response, botMessage)
       }
