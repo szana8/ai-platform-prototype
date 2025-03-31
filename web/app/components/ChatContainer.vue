@@ -18,9 +18,8 @@ const props = defineProps<{
                     ? 'bg-gray-100 text-gray-800 dark:text-gray-900 p-3 rounded-2xl'
                     : 'text-gray-800 dark:text-white p-3'" v-html="message.text">
                 </div>
-                {{ message.imageUrl }}
+
                 <div v-if="message.imageUrl">
-                    Lofasz
                     <img :src="message.imageUrl" alt="Generated Image"
                         class="chat-image w-1/2 rounded-xl flex justify-center" />
                 </div>
