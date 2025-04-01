@@ -3,5 +3,9 @@
         {
             "path": "."
         }
-    ]
+    ],
+    "settings": {
+        "Laravel.basePath": "api",
+        "Laravel.phpCommand": "docker compose exec -it api php {code}"
+    }
 }

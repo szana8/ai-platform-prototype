@@ -9,7 +9,9 @@ const chartOptions = ref({
         text: 'Daily usage'
     },
     series: [{
-        data: [1, 2, 3, 4, 5, 6, 3, 2]
+        "data": [1, 2, 3, 4, 5, 6, 3, 2],
+    }, {
+        "data": [2, 4, 54, 23, 66, 45, 30, 22],
     }]
 });
 

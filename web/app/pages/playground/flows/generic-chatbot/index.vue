@@ -17,7 +17,7 @@ const systemPrompt = ref<string>('')
 
 // Default configuration
 const defaultOptions: ChatStreamOptions = {
-    url: "http://localhost:8090/api/chat",
+    url: "http://localhost:8090/api/run/flow",
     stream: false,
     headers: {
         // Any additional default headers
@@ -29,15 +29,18 @@ const { messages, sendMessage, isLoading, error } = useChatStream(defaultOptions
 const submit = async () => {
     if (prompt.value.trim() === '') return;
 
-    let tmp = prompt.value
+    let request_prompt = prompt.value
     prompt.value = '';
 
-    await sendMessage(tmp, {
-        stream: isStreamEnabled.value,
-    }, {
-        systemPrompt: systemPrompt.value,
-        llm: llm.value
-    });
+    await sendMessage(
+        request_prompt,
+        'generic-text-chatbot',
+        { stream: isStreamEnabled.value },
+        {
+            systemPrompt: systemPrompt.value,
+            llm: llm.value
+        }
+    );
 };
 
 // Settings handler

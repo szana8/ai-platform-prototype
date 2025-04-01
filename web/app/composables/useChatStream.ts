@@ -60,7 +60,7 @@ const streamResponse = async (response: any, botMessage: any) => {
   }
 }
 
-  const sendMessage = async (userInput: string, customOptions?: Partial<ChatStreamOptions>, tweaks?: Record<string, string>) => {
+  const sendMessage = async (userInput: string, flow_id: string, customOptions?: Partial<ChatStreamOptions>, tweaks?: Record<string, string>) => {
 
     const options: ChatStreamOptions = {
       ...defaultOptions,
@@ -81,10 +81,13 @@ const streamResponse = async (response: any, botMessage: any) => {
           ...(options.headers || {})
         },
         body: JSON.stringify({
-          input_value: userInput,
-          output_type: "chat",
-          input_type: "chat",
-          tweaks: tweaks
+          body: {
+            input_value: userInput,
+            output_type: "chat",
+            input_type: "chat",
+          },
+          tweaks: tweaks,
+          flow_id: flow_id,
         })
       };
 
