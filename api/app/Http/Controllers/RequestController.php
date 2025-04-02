@@ -2,23 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Request\CreateNewRequest;
 use App\Http\Requests\CreateRequest;
-use App\Models\Request;
-use App\Services\LangflowService;
 
 class RequestController extends Controller
 {
-    public function __invoke(CreateRequest $request): mixed
+    public function __invoke(CreateRequest $request, CreateNewRequest $createNewRequest): mixed
     {
-        $savedRequest = Request::create([
-            'flow_id' => $request->flow_id,
-            'request' => $request->body,
-            'user_id' => auth()->user()->getAuthIdentifier(),
-            'stream' => false,
-        ]);
-
-        $response = LangflowService::send($savedRequest);
-
-        return $response->json();
+        return $createNewRequest->handle($request)->json();
     }
 }

@@ -17,7 +17,7 @@ const systemPrompt = ref<string>('')
 
 // Default configuration
 const defaultOptions: ChatStreamOptions = {
-    url: "http://localhost:8090/api/run/flow",
+    url: "http://localhost:8090/api/flow/run",
     stream: false,
     headers: {
         // Any additional default headers

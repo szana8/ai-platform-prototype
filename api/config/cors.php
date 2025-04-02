@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['*', 'http://host.docker.internal:3000'],
 
     'allowed_origins_patterns' => [],
 

@@ -89,7 +89,7 @@ services:
 
     langflow:
         image: langflowai/langflow:latest
-        # pull_policy: always
+        pull_policy: always
         ports:
             - "7860:7860"
         depends_on:
