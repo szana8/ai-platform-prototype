@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { InputLabel } from '#components';
 import { ref } from 'vue';
 import type { ChatStreamOptions } from '~~/types/ChatTypes';
-
 
 definePageMeta({
     middleware: ['sanctum:auth'],
@@ -10,40 +8,42 @@ definePageMeta({
     title: "Playground - Text to image"
 })
 
-// Default configuration
-const defaultOptions: ChatStreamOptions = {
-    //url: "http://localhost:7860/api/v1/run/1570a19c-f16a-445f-bc7c-8a10f369c80c",
-    url: "http://localhost:8090/api/text-to-image",
-    stream: true, // Enable streaming by default
-    headers: {
-        // Any additional default headers
-    }
-}
-
 const prompt = ref('')
 const isStreamEnabled = ref(false)
 let isSettingsOpen = ref(false)
+const llm = ref<string>('smollm:135m')
+const systemPrompt = ref<string>('')
+
+
+const defaultOptions: ChatStreamOptions = {
+    url: "http://localhost:8090/api/run/flow",
+    stream: false,
+    headers: {
+        // ...
+    }
+}
 const { messages, sendMessage, isLoading, error } = useChatStream(defaultOptions)
 
 const submit = async () => {
-    // Prevent empty submissions
     if (prompt.value.trim() === '') return;
 
-    let tmp = prompt.value
+    let request_prompt = prompt.value
     prompt.value = '';
 
-    // Send message with optional stream configuration
-    await sendMessage(tmp, {
-        stream: isStreamEnabled.value
-    });
+    await sendMessage(
+        request_prompt,
+        '7ae99595-acc7-4b99-90e5-0c96bb6c7e97',
+        { stream: isStreamEnabled.value },
+        {
+            systemPrompt: systemPrompt.value,
+            llm: llm.value
+        }
+    );
 };
 
-// Settings handler
 const toogleSetup = () => {
-    // Handle opening settings modal or configuration
     isSettingsOpen.value = !isSettingsOpen.value
 };
-
 </script>
 
 <template>
@@ -73,38 +73,3 @@ const toogleSetup = () => {
 
     </div>
 </template>
-
-<style scoped>
-pre {
-    background-color: #f4f4f4;
-    border-radius: 4px;
-    padding: 10px;
-    margin: 10px 0;
-    overflow-x: auto;
-}
-
-code {
-    font-family: 'Courier New', monospace;
-    font-size: 0.9em;
-}
-
-.dots-animation::after {
-    content: "";
-    display: inline-block;
-    animation: dots 1.5s infinite steps(3);
-}
-
-@keyframes dots {
-    0% {
-        content: ".";
-    }
-
-    33% {
-        content: "..";
-    }
-
-    66% {
-        content: "...";
-    }
-}
-</style>
