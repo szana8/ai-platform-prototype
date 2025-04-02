@@ -1,5 +1,5 @@
 {
-  "access_type": "PUBLIC",
+  "access_type": "PRIVATE",
   "data": {
     "edges": [
       {
@@ -8,43 +8,42 @@
         "data": {
           "sourceHandle": {
             "dataType": "ChatInput",
-            "id": "ChatInput-1igyk",
+            "id": "ChatInput-1NOeh",
             "name": "message",
             "output_types": [
               "Message"
             ]
           },
           "targetHandle": {
-            "fieldName": "input_prompt",
-            "id": "CustomComponent-rUc1v",
+            "fieldName": "input_value",
+            "id": "OpenAIModel-03XuU",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__ChatInput-1igyk{œdataTypeœ:œChatInputœ,œidœ:œChatInput-1igykœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-CustomComponent-rUc1v{œfieldNameœ:œinput_promptœ,œidœ:œCustomComponent-rUc1vœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
-        "selected": false,
-        "source": "ChatInput-1igyk",
-        "sourceHandle": "{œdataTypeœ:œChatInputœ,œidœ:œChatInput-1igykœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "CustomComponent-rUc1v",
-        "targetHandle": "{œfieldNameœ:œinput_promptœ,œidœ:œCustomComponent-rUc1vœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "id": "xy-edge__ChatInput-1NOeh{œdataTypeœ:œChatInputœ,œidœ:œChatInput-1NOehœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-OpenAIModel-03XuU{œfieldNameœ:œinput_valueœ,œidœ:œOpenAIModel-03XuUœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "source": "ChatInput-1NOeh",
+        "sourceHandle": "{œdataTypeœ:œChatInputœ,œidœ:œChatInput-1NOehœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "OpenAIModel-03XuU",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œOpenAIModel-03XuUœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
         "className": "",
         "data": {
           "sourceHandle": {
-            "dataType": "TestComponent",
-            "id": "CustomComponent-rUc1v",
-            "name": "output_message",
+            "dataType": "OpenAIModel",
+            "id": "OpenAIModel-03XuU",
+            "name": "text_output",
             "output_types": [
               "Message"
             ]
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "ChatOutput-f65cP",
+            "id": "ChatOutput-2RQLM",
             "inputTypes": [
               "Data",
               "DataFrame",
@@ -53,46 +52,17 @@
             "type": "other"
           }
         },
-        "id": "xy-edge__CustomComponent-rUc1v{œdataTypeœ:œTestComponentœ,œidœ:œCustomComponent-rUc1vœ,œnameœ:œoutput_messageœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-f65cP{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-f65cPœ,œinputTypesœ:[œDataœ,œDataFrameœ,œMessageœ],œtypeœ:œotherœ}",
-        "selected": false,
-        "source": "CustomComponent-rUc1v",
-        "sourceHandle": "{œdataTypeœ:œTestComponentœ,œidœ:œCustomComponent-rUc1vœ,œnameœ:œoutput_messageœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "ChatOutput-f65cP",
-        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-f65cPœ,œinputTypesœ:[œDataœ,œDataFrameœ,œMessageœ],œtypeœ:œotherœ}"
-      },
-      {
-        "animated": false,
-        "className": "",
-        "data": {
-          "sourceHandle": {
-            "dataType": "IDGenerator",
-            "id": "IDGenerator-3pezR",
-            "name": "id",
-            "output_types": [
-              "Message"
-            ]
-          },
-          "targetHandle": {
-            "fieldName": "output_directory",
-            "id": "CustomComponent-rUc1v",
-            "inputTypes": [
-              "Message"
-            ],
-            "type": "str"
-          }
-        },
-        "id": "xy-edge__IDGenerator-3pezR{œdataTypeœ:œIDGeneratorœ,œidœ:œIDGenerator-3pezRœ,œnameœ:œidœ,œoutput_typesœ:[œMessageœ]}-CustomComponent-rUc1v{œfieldNameœ:œoutput_directoryœ,œidœ:œCustomComponent-rUc1vœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
-        "selected": false,
-        "source": "IDGenerator-3pezR",
-        "sourceHandle": "{œdataTypeœ:œIDGeneratorœ,œidœ:œIDGenerator-3pezRœ,œnameœ:œidœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "CustomComponent-rUc1v",
-        "targetHandle": "{œfieldNameœ:œoutput_directoryœ,œidœ:œCustomComponent-rUc1vœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "id": "xy-edge__OpenAIModel-03XuU{œdataTypeœ:œOpenAIModelœ,œidœ:œOpenAIModel-03XuUœ,œnameœ:œtext_outputœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-2RQLM{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-2RQLMœ,œinputTypesœ:[œDataœ,œDataFrameœ,œMessageœ],œtypeœ:œotherœ}",
+        "source": "OpenAIModel-03XuU",
+        "sourceHandle": "{œdataTypeœ:œOpenAIModelœ,œidœ:œOpenAIModel-03XuUœ,œnameœ:œtext_outputœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "ChatOutput-2RQLM",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-2RQLMœ,œinputTypesœ:[œDataœ,œDataFrameœ,œMessageœ],œtypeœ:œotherœ}"
       }
     ],
     "nodes": [
       {
         "data": {
-          "id": "ChatInput-1igyk",
+          "id": "ChatInput-1NOeh",
           "node": {
             "base_classes": [
               "Message"
@@ -391,21 +361,21 @@
           "type": "ChatInput"
         },
         "dragging": false,
-        "id": "ChatInput-1igyk",
+        "id": "ChatInput-1NOeh",
         "measured": {
           "height": 66,
           "width": 192
         },
         "position": {
-          "x": -1141.2200493950713,
-          "y": -973.6766464333442
+          "x": 527.1733021987535,
+          "y": 213.33765125807935
         },
         "selected": false,
         "type": "genericNode"
       },
       {
         "data": {
-          "id": "ChatOutput-f65cP",
+          "id": "ChatOutput-2RQLM",
           "node": {
             "base_classes": [
               "Message"
@@ -432,6 +402,7 @@
             "frozen": false,
             "icon": "MessagesSquare",
             "legacy": false,
+            "lf_version": "1.3.0",
             "metadata": {},
             "minimized": true,
             "output_types": [],
@@ -559,7 +530,7 @@
                 "trace_as_input": true,
                 "trace_as_metadata": true,
                 "type": "str",
-                "value": "{text}, {contents}"
+                "value": "{text}"
               },
               "input_value": {
                 "_input_type": "HandleInput",
@@ -700,309 +671,52 @@
           "type": "ChatOutput"
         },
         "dragging": false,
-        "id": "ChatOutput-f65cP",
+        "id": "ChatOutput-2RQLM",
         "measured": {
           "height": 66,
           "width": 192
         },
         "position": {
-          "x": -12.239426707432585,
-          "y": -634.9649804591392
-        },
-        "selected": true,
-        "type": "genericNode"
-      },
-      {
-        "data": {
-          "id": "CustomComponent-rUc1v",
-          "node": {
-            "base_classes": [
-              "Message"
-            ],
-            "beta": false,
-            "conditional_paths": [],
-            "custom_fields": {},
-            "description": "Custom component to create image.",
-            "display_name": "Stable Diffusion Component",
-            "documentation": "",
-            "edited": true,
-            "field_order": [
-              "input_prompt",
-              "input_steps",
-              "input_base_url",
-              "input_height",
-              "input_width",
-              "input_apikey",
-              "input_timoutduration",
-              "output_directory"
-            ],
-            "frozen": false,
-            "icon": "custom_components",
-            "legacy": false,
-            "lf_version": "1.2.0",
-            "metadata": {},
-            "minimized": false,
-            "output_types": [],
-            "outputs": [
-              {
-                "allows_loop": false,
-                "cache": true,
-                "display_name": "Output Message",
-                "hidden": null,
-                "method": "build_output_message",
-                "name": "output_message",
-                "required_inputs": null,
-                "selected": "Message",
-                "tool_mode": true,
-                "types": [
-                  "Message"
-                ],
-                "value": "__UNDEFINED__"
-              }
-            ],
-            "pinned": false,
-            "template": {
-              "_type": "Component",
-              "code": {
-                "advanced": true,
-                "dynamic": true,
-                "fileTypes": [],
-                "file_path": "",
-                "info": "",
-                "list": false,
-                "load_from_db": false,
-                "multiline": true,
-                "name": "code",
-                "password": false,
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "type": "code",
-                "value": "import os\nimport io\nimport logging\nimport base64\nimport requests\nimport uuid\nfrom datetime import datetime\nfrom langflow.custom import Component\nfrom langflow.inputs import StrInput\nfrom langflow.io import MessageTextInput, Output\nfrom langflow.field_typing import Text\nfrom langflow.schema import Data\nfrom langflow.schema.message import Message\nfrom langflow.schema.content_block import ContentBlock\nfrom langflow.schema.content_types import TextContent, MediaContent\nfrom langflow.inputs import StrInput, MultilineInput, SecretStrInput, IntInput, DropdownInput\nfrom langflow.template import Output, Input\n\nclass CustomComponent(Component):\n    display_name = \"Image generator\"\n    description = \"Custom component to create image.\"\n    icon = \"custom_components\"\n    name = \"TestComponent\"\n    inputs = [\n        MessageTextInput(\n            name=\"input_prompt\",\n            required=True,\n            display_name=\"Input Prompt\",\n            placeholder=\"Enter text to analyze\",\n            input_types=[\"Message\"]\n        ),\n        Input(\n            name=\"input_steps\", \n            display_name=\"Steps\",\n            required=True,\n            input_types=[\"Message\"]\n        ),\n        Input(\n            name=\"input_base_url\", \n            display_name=\"Base Url\",\n            required=True,\n            input_types=[\"Message\"]\n        ),\n        DropdownInput(\n            name=\"input_height\",\n            display_name=\"height\",\n            required=True,\n            options=[\"512\", \"1024\"],\n            input_types=[\"Message\"]\n        ),\n        DropdownInput(\n            name=\"input_width\",\n            display_name=\"width\",\n            required=True,\n            options=[\"512\", \"1024\"],\n            input_types=[\"Message\"]\n        ),\n        Input(\n            name=\"input_apikey\", \n            display_name=\"Api Key\",\n            password=\"true\",\n            input_types=[\"Message\"]\n        ),\n        Input(\n            name=\"input_timoutduration\",\n            display_name=\"Timeout Duration\",\n            field_type=\"int\",\n            required=False,\n            value=10,\n        ),\n        MessageTextInput(\n            name=\"output_directory\",\n            display_name=\"Current flowID\",\n            field_type=\"str\",\n            required=True,\n        ),\n    ]\n    outputs = [\n        Output(display_name=\"Output Message\", name=\"output_message\", method=\"build_output_message\"),\n    ]\n        \n    def build_output_message(self) -> Message:\n        url = self.input_base_url\n        headers = {\n            \"Authorization\": f\"Bearer {self.input_apikey}\",\n            \"Content-Type\": \"application/json\",\n        }\n        data = {\n            \"inputs\": self.input_prompt,\n        }\n        \n        response = requests.post(url, headers=headers, json=data, timeout=self.input_timoutduration)\n        response.raise_for_status()\n        \n        image_data = base64.b64encode(io.BytesIO(response.content).getvalue())\n        #define variable with env variables\n        ROOTDIR = os.environ['LANGFLOW_CONFIG_DIR']\n        LANGFLOW_BASE_URL = os.environ['LANGFLOW_BASE_URL']\n\n        #create repository if non existant\n        os.makedirs(self.output_directory, exist_ok=True)\n\n        # Generate a unique filename\n        BASE_IMAGE_URL = os.path.join(LANGFLOW_BASE_URL, \"/api/v1/files/images/\")\n        timestamp = datetime.now().strftime(\"%Y-%m-%d_%H-%M-%S\")\n        filename = f\"{timestamp}_{len(os.listdir(self.output_directory)) + 1}.jpg\"\n \n        relative_path = os.path.join(filename)\n        full_path = os.path.join(ROOTDIR, self.output_directory, relative_path)\n        full_url_path = os.path.join(BASE_IMAGE_URL, self.output_directory, relative_path)\n\n        # Ensure the directory for the file exists\n        os.makedirs(os.path.dirname(full_path), exist_ok=True)\n        \n            \n        # Save the image\n        with open(full_path, \"wb\") as image_file:\n            image_file.write(base64.b64decode(image_data))\n        \n        image_to_chat = Message(\n            text=\"image generated\",\n            sender=\"image_gen\",\n            sender_name=\"Image\",\n            content_blocks=[\n            ContentBlock(\n            title=\"Media Block\",\n            contents=[\n                MediaContent(type=\"media\", urls=[full_url_path])\n                    ]\n                )\n            ],\n        )\n        return image_to_chat\n        "
-              },
-              "input_apikey": {
-                "advanced": false,
-                "display_name": "Api Key",
-                "dynamic": false,
-                "fileTypes": [],
-                "file_path": "",
-                "info": "",
-                "input_types": [
-                  "Message"
-                ],
-                "list": false,
-                "load_from_db": true,
-                "multiline": false,
-                "name": "input_apikey",
-                "password": true,
-                "placeholder": "",
-                "required": false,
-                "show": true,
-                "title_case": false,
-                "type": "str",
-                "value": "HUGGING_FACE_KEY"
-              },
-              "input_base_url": {
-                "advanced": false,
-                "display_name": "Base Url",
-                "dynamic": false,
-                "fileTypes": [],
-                "file_path": "",
-                "info": "",
-                "input_types": [
-                  "Message"
-                ],
-                "list": false,
-                "load_from_db": false,
-                "multiline": false,
-                "name": "input_base_url",
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "type": "str",
-                "value": "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-2"
-              },
-              "input_height": {
-                "_input_type": "DropdownInput",
-                "advanced": false,
-                "combobox": false,
-                "dialog_inputs": {},
-                "display_name": "height",
-                "dynamic": false,
-                "info": "",
-                "input_types": [
-                  "Message"
-                ],
-                "load_from_db": false,
-                "name": "input_height",
-                "options": [
-                  "512",
-                  "1024"
-                ],
-                "options_metadata": [],
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "tool_mode": false,
-                "trace_as_metadata": true,
-                "type": "str",
-                "value": "512"
-              },
-              "input_prompt": {
-                "_input_type": "MessageTextInput",
-                "advanced": false,
-                "display_name": "Input Prompt",
-                "dynamic": false,
-                "info": "",
-                "input_types": [
-                  "Message"
-                ],
-                "list": false,
-                "list_add_label": "Add More",
-                "load_from_db": false,
-                "name": "input_prompt",
-                "placeholder": "Enter text to analyze",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "tool_mode": false,
-                "trace_as_input": true,
-                "trace_as_metadata": true,
-                "type": "str",
-                "value": ""
-              },
-              "input_steps": {
-                "advanced": false,
-                "display_name": "Steps",
-                "dynamic": false,
-                "fileTypes": [],
-                "file_path": "",
-                "info": "",
-                "input_types": [
-                  "Message"
-                ],
-                "list": false,
-                "load_from_db": false,
-                "multiline": false,
-                "name": "input_steps",
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "type": "str",
-                "value": "1"
-              },
-              "input_timoutduration": {
-                "advanced": false,
-                "display_name": "Timeout Duration",
-                "dynamic": false,
-                "fileTypes": [],
-                "file_path": "",
-                "info": "",
-                "list": false,
-                "load_from_db": false,
-                "multiline": false,
-                "name": "input_timoutduration",
-                "placeholder": "",
-                "required": false,
-                "show": true,
-                "title_case": false,
-                "type": "int",
-                "value": 30
-              },
-              "input_width": {
-                "_input_type": "DropdownInput",
-                "advanced": false,
-                "combobox": false,
-                "dialog_inputs": {},
-                "display_name": "width",
-                "dynamic": false,
-                "info": "",
-                "input_types": [
-                  "Message"
-                ],
-                "load_from_db": false,
-                "name": "input_width",
-                "options": [
-                  "512",
-                  "1024"
-                ],
-                "options_metadata": [],
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "tool_mode": false,
-                "trace_as_metadata": true,
-                "type": "str",
-                "value": "512"
-              },
-              "output_directory": {
-                "_input_type": "MessageTextInput",
-                "advanced": false,
-                "display_name": "Current flowID",
-                "dynamic": false,
-                "info": "",
-                "input_types": [
-                  "Message"
-                ],
-                "list": false,
-                "list_add_label": "Add More",
-                "load_from_db": false,
-                "name": "output_directory",
-                "placeholder": "",
-                "required": true,
-                "show": true,
-                "title_case": false,
-                "tool_mode": false,
-                "trace_as_input": true,
-                "trace_as_metadata": true,
-                "type": "str",
-                "value": ""
-              }
-            },
-            "tool_mode": false
-          },
-          "showNode": true,
-          "type": "TestComponent"
-        },
-        "dragging": false,
-        "id": "CustomComponent-rUc1v",
-        "measured": {
-          "height": 803,
-          "width": 320
-        },
-        "position": {
-          "x": -626.7110314503146,
-          "y": -959.82927437365
+          "x": 1605,
+          "y": 460
         },
         "selected": false,
         "type": "genericNode"
       },
       {
         "data": {
-          "id": "IDGenerator-3pezR",
+          "id": "OpenAIModel-03XuU",
           "node": {
             "base_classes": [
+              "LanguageModel",
               "Message"
             ],
             "beta": false,
-            "category": "helpers",
+            "category": "models",
             "conditional_paths": [],
             "custom_fields": {},
-            "description": "Generates a unique ID.",
-            "display_name": "ID Generator",
+            "description": "Generates text using OpenAI LLMs.",
+            "display_name": "OpenAI",
             "documentation": "",
             "edited": false,
             "field_order": [
-              "unique_id"
+              "input_value",
+              "system_message",
+              "stream",
+              "max_tokens",
+              "model_kwargs",
+              "json_mode",
+              "model_name",
+              "openai_api_base",
+              "api_key",
+              "temperature",
+              "seed",
+              "max_retries",
+              "timeout"
             ],
             "frozen": false,
-            "icon": "fingerprint",
-            "key": "IDGenerator",
+            "icon": "OpenAI",
+            "key": "OpenAIModel",
             "legacy": false,
             "lf_version": "1.3.0",
             "metadata": {},
@@ -1012,24 +726,57 @@
               {
                 "allows_loop": false,
                 "cache": true,
-                "display_name": "ID",
-                "hidden": null,
-                "method": "generate_id",
-                "name": "id",
-                "options": null,
-                "required_inputs": null,
+                "display_name": "Message",
+                "method": "text_response",
+                "name": "text_output",
+                "required_inputs": [],
                 "selected": "Message",
                 "tool_mode": true,
                 "types": [
                   "Message"
                 ],
                 "value": "__UNDEFINED__"
+              },
+              {
+                "allows_loop": false,
+                "cache": true,
+                "display_name": "Language Model",
+                "method": "build_model",
+                "name": "model_output",
+                "required_inputs": [
+                  "api_key"
+                ],
+                "selected": "LanguageModel",
+                "tool_mode": true,
+                "types": [
+                  "LanguageModel"
+                ],
+                "value": "__UNDEFINED__"
               }
             ],
             "pinned": false,
-            "score": 0.0032989581065437554,
+            "score": 0.2,
             "template": {
               "_type": "Component",
+              "api_key": {
+                "_input_type": "SecretStrInput",
+                "advanced": false,
+                "display_name": "OpenAI API Key",
+                "dynamic": false,
+                "info": "The OpenAI API Key to use for the OpenAI model.",
+                "input_types": [
+                  "Message"
+                ],
+                "load_from_db": true,
+                "name": "api_key",
+                "password": true,
+                "placeholder": "",
+                "required": true,
+                "show": true,
+                "title_case": false,
+                "type": "str",
+                "value": "OPENAI"
+              },
               "code": {
                 "advanced": true,
                 "dynamic": true,
@@ -1046,71 +793,302 @@
                 "show": true,
                 "title_case": false,
                 "type": "code",
-                "value": "import uuid\nfrom typing import Any\n\nfrom typing_extensions import override\n\nfrom langflow.custom import Component\nfrom langflow.io import MessageTextInput, Output\nfrom langflow.schema import dotdict\nfrom langflow.schema.message import Message\n\n\nclass IDGeneratorComponent(Component):\n    display_name = \"ID Generator\"\n    description = \"Generates a unique ID.\"\n    icon = \"fingerprint\"\n    name = \"IDGenerator\"\n\n    inputs = [\n        MessageTextInput(\n            name=\"unique_id\",\n            display_name=\"Value\",\n            info=\"The generated unique ID.\",\n            refresh_button=True,\n            tool_mode=True,\n        ),\n    ]\n\n    outputs = [\n        Output(display_name=\"ID\", name=\"id\", method=\"generate_id\"),\n    ]\n\n    @override\n    def update_build_config(self, build_config: dotdict, field_value: Any, field_name: str | None = None):\n        if field_name == \"unique_id\":\n            build_config[field_name][\"value\"] = str(uuid.uuid4())\n        return build_config\n\n    def generate_id(self) -> Message:\n        unique_id = self.unique_id or str(uuid.uuid4())\n        self.status = f\"Generated ID: {unique_id}\"\n        return Message(text=unique_id)\n"
+                "value": "from langchain_openai import ChatOpenAI\nfrom pydantic.v1 import SecretStr\n\nfrom langflow.base.models.model import LCModelComponent\nfrom langflow.base.models.openai_constants import OPENAI_MODEL_NAMES\nfrom langflow.field_typing import LanguageModel\nfrom langflow.field_typing.range_spec import RangeSpec\nfrom langflow.inputs import BoolInput, DictInput, DropdownInput, IntInput, SecretStrInput, SliderInput, StrInput\n\n\nclass OpenAIModelComponent(LCModelComponent):\n    display_name = \"OpenAI\"\n    description = \"Generates text using OpenAI LLMs.\"\n    icon = \"OpenAI\"\n    name = \"OpenAIModel\"\n\n    inputs = [\n        *LCModelComponent._base_inputs,\n        IntInput(\n            name=\"max_tokens\",\n            display_name=\"Max Tokens\",\n            advanced=True,\n            info=\"The maximum number of tokens to generate. Set to 0 for unlimited tokens.\",\n            range_spec=RangeSpec(min=0, max=128000),\n        ),\n        DictInput(\n            name=\"model_kwargs\",\n            display_name=\"Model Kwargs\",\n            advanced=True,\n            info=\"Additional keyword arguments to pass to the model.\",\n        ),\n        BoolInput(\n            name=\"json_mode\",\n            display_name=\"JSON Mode\",\n            advanced=True,\n            info=\"If True, it will output JSON regardless of passing a schema.\",\n        ),\n        DropdownInput(\n            name=\"model_name\",\n            display_name=\"Model Name\",\n            advanced=False,\n            options=OPENAI_MODEL_NAMES,\n            value=OPENAI_MODEL_NAMES[1],\n            combobox=True,\n        ),\n        StrInput(\n            name=\"openai_api_base\",\n            display_name=\"OpenAI API Base\",\n            advanced=True,\n            info=\"The base URL of the OpenAI API. \"\n            \"Defaults to https://api.openai.com/v1. \"\n            \"You can change this to use other APIs like JinaChat, LocalAI and Prem.\",\n        ),\n        SecretStrInput(\n            name=\"api_key\",\n            display_name=\"OpenAI API Key\",\n            info=\"The OpenAI API Key to use for the OpenAI model.\",\n            advanced=False,\n            value=\"OPENAI_API_KEY\",\n            required=True,\n        ),\n        SliderInput(\n            name=\"temperature\",\n            display_name=\"Temperature\",\n            value=0.1,\n            range_spec=RangeSpec(min=0, max=1, step=0.01),\n            advanced=True,\n        ),\n        IntInput(\n            name=\"seed\",\n            display_name=\"Seed\",\n            info=\"The seed controls the reproducibility of the job.\",\n            advanced=True,\n            value=1,\n        ),\n        IntInput(\n            name=\"max_retries\",\n            display_name=\"Max Retries\",\n            info=\"The maximum number of retries to make when generating.\",\n            advanced=True,\n            value=5,\n        ),\n        IntInput(\n            name=\"timeout\",\n            display_name=\"Timeout\",\n            info=\"The timeout for requests to OpenAI completion API.\",\n            advanced=True,\n            value=700,\n        ),\n    ]\n\n    def build_model(self) -> LanguageModel:  # type: ignore[type-var]\n        openai_api_key = self.api_key\n        temperature = self.temperature\n        model_name: str = self.model_name\n        max_tokens = self.max_tokens\n        model_kwargs = self.model_kwargs or {}\n        openai_api_base = self.openai_api_base or \"https://api.openai.com/v1\"\n        json_mode = self.json_mode\n        seed = self.seed\n        max_retries = self.max_retries\n        timeout = self.timeout\n\n        api_key = SecretStr(openai_api_key).get_secret_value() if openai_api_key else None\n        output = ChatOpenAI(\n            max_tokens=max_tokens or None,\n            model_kwargs=model_kwargs,\n            model=model_name,\n            base_url=openai_api_base,\n            api_key=api_key,\n            temperature=temperature if temperature is not None else 0.1,\n            seed=seed,\n            max_retries=max_retries,\n            request_timeout=timeout,\n        )\n        if json_mode:\n            output = output.bind(response_format={\"type\": \"json_object\"})\n\n        return output\n\n    def _get_exception_message(self, e: Exception):\n        \"\"\"Get a message from an OpenAI exception.\n\n        Args:\n            e (Exception): The exception to get the message from.\n\n        Returns:\n            str: The message from the exception.\n        \"\"\"\n        try:\n            from openai import BadRequestError\n        except ImportError:\n            return None\n        if isinstance(e, BadRequestError):\n            message = e.body.get(\"message\")\n            if message:\n                return message\n        return None\n"
               },
-              "unique_id": {
-                "_input_type": "MessageTextInput",
+              "input_value": {
+                "_input_type": "MessageInput",
                 "advanced": false,
-                "display_name": "Value",
+                "display_name": "Input",
                 "dynamic": false,
-                "info": "The generated unique ID.",
+                "info": "",
                 "input_types": [
                   "Message"
                 ],
                 "list": false,
                 "list_add_label": "Add More",
                 "load_from_db": false,
-                "name": "unique_id",
+                "name": "input_value",
                 "placeholder": "",
-                "refresh_button": true,
                 "required": false,
                 "show": true,
                 "title_case": false,
-                "tool_mode": true,
+                "tool_mode": false,
                 "trace_as_input": true,
                 "trace_as_metadata": true,
                 "type": "str",
-                "value": "5c8c725c-54ac-4c48-8fd3-402903682d84"
+                "value": ""
+              },
+              "json_mode": {
+                "_input_type": "BoolInput",
+                "advanced": true,
+                "display_name": "JSON Mode",
+                "dynamic": false,
+                "info": "If True, it will output JSON regardless of passing a schema.",
+                "list": false,
+                "list_add_label": "Add More",
+                "name": "json_mode",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "type": "bool",
+                "value": false
+              },
+              "max_retries": {
+                "_input_type": "IntInput",
+                "advanced": true,
+                "display_name": "Max Retries",
+                "dynamic": false,
+                "info": "The maximum number of retries to make when generating.",
+                "list": false,
+                "list_add_label": "Add More",
+                "name": "max_retries",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "type": "int",
+                "value": 5
+              },
+              "max_tokens": {
+                "_input_type": "IntInput",
+                "advanced": true,
+                "display_name": "Max Tokens",
+                "dynamic": false,
+                "info": "The maximum number of tokens to generate. Set to 0 for unlimited tokens.",
+                "list": false,
+                "list_add_label": "Add More",
+                "name": "max_tokens",
+                "placeholder": "",
+                "range_spec": {
+                  "max": 128000,
+                  "min": 0,
+                  "step": 0.1,
+                  "step_type": "float"
+                },
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "type": "int",
+                "value": ""
+              },
+              "model_kwargs": {
+                "_input_type": "DictInput",
+                "advanced": true,
+                "display_name": "Model Kwargs",
+                "dynamic": false,
+                "info": "Additional keyword arguments to pass to the model.",
+                "list": false,
+                "list_add_label": "Add More",
+                "name": "model_kwargs",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "type": "dict",
+                "value": {}
+              },
+              "model_name": {
+                "_input_type": "DropdownInput",
+                "advanced": false,
+                "combobox": true,
+                "dialog_inputs": {},
+                "display_name": "Model Name",
+                "dynamic": false,
+                "info": "",
+                "name": "model_name",
+                "options": [
+                  "gpt-4o-mini",
+                  "gpt-4o",
+                  "gpt-4.5-preview",
+                  "gpt-4-turbo",
+                  "gpt-4-turbo-preview",
+                  "gpt-4",
+                  "gpt-3.5-turbo"
+                ],
+                "options_metadata": [],
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": "gpt-4o-mini"
+              },
+              "openai_api_base": {
+                "_input_type": "StrInput",
+                "advanced": true,
+                "display_name": "OpenAI API Base",
+                "dynamic": false,
+                "info": "The base URL of the OpenAI API. Defaults to https://api.openai.com/v1. You can change this to use other APIs like JinaChat, LocalAI and Prem.",
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "name": "openai_api_base",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": ""
+              },
+              "seed": {
+                "_input_type": "IntInput",
+                "advanced": true,
+                "display_name": "Seed",
+                "dynamic": false,
+                "info": "The seed controls the reproducibility of the job.",
+                "list": false,
+                "list_add_label": "Add More",
+                "name": "seed",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "type": "int",
+                "value": 1
+              },
+              "stream": {
+                "_input_type": "BoolInput",
+                "advanced": true,
+                "display_name": "Stream",
+                "dynamic": false,
+                "info": "Stream the response from the model. Streaming works only in Chat.",
+                "list": false,
+                "list_add_label": "Add More",
+                "name": "stream",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "type": "bool",
+                "value": false
+              },
+              "system_message": {
+                "_input_type": "MultilineInput",
+                "advanced": false,
+                "copy_field": false,
+                "display_name": "System Message",
+                "dynamic": false,
+                "info": "System message to pass to the model.",
+                "input_types": [
+                  "Message"
+                ],
+                "list": false,
+                "list_add_label": "Add More",
+                "load_from_db": false,
+                "multiline": true,
+                "name": "system_message",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "type": "str",
+                "value": "You are a helpful assistant, who can answer questions."
+              },
+              "temperature": {
+                "_input_type": "SliderInput",
+                "advanced": true,
+                "display_name": "Temperature",
+                "dynamic": false,
+                "info": "",
+                "max_label": "",
+                "max_label_icon": "",
+                "min_label": "",
+                "min_label_icon": "",
+                "name": "temperature",
+                "placeholder": "",
+                "range_spec": {
+                  "max": 1,
+                  "min": 0,
+                  "step": 0.01,
+                  "step_type": "float"
+                },
+                "required": false,
+                "show": true,
+                "slider_buttons": false,
+                "slider_buttons_options": [],
+                "slider_input": false,
+                "title_case": false,
+                "tool_mode": false,
+                "type": "slider",
+                "value": 0.1
+              },
+              "timeout": {
+                "_input_type": "IntInput",
+                "advanced": true,
+                "display_name": "Timeout",
+                "dynamic": false,
+                "info": "The timeout for requests to OpenAI completion API.",
+                "list": false,
+                "list_add_label": "Add More",
+                "name": "timeout",
+                "placeholder": "",
+                "required": false,
+                "show": true,
+                "title_case": false,
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "type": "int",
+                "value": 700
               }
             },
             "tool_mode": false
           },
           "showNode": true,
-          "type": "IDGenerator"
+          "type": "OpenAIModel"
         },
         "dragging": false,
-        "id": "IDGenerator-3pezR",
+        "id": "OpenAIModel-03XuU",
         "measured": {
-          "height": 229,
+          "height": 523,
           "width": 320
         },
         "position": {
-          "x": -1201.0632247482722,
-          "y": -612.7534145320645
+          "x": 889.636408067867,
+          "y": 202.89457681699446
         },
-        "selected": false,
+        "selected": true,
         "type": "genericNode"
       }
     ],
     "viewport": {
-      "x": 1323.4306323591732,
-      "y": 1176.0496997823075,
-      "zoom": 0.8654254088722305
+      "x": -593.8372185234193,
+      "y": -77.78348750951193,
+      "zoom": 1.4408285613286824
     }
   },
-  "description": "Generate images using huggingface servers stable-diffusion. It should work with local stable diffusion api as well.",
-  "endpoint_name": "text-to-image",
+  "description": "OpenAI Chatbot",
+  "endpoint_name": "generic-text-chatbot-openai",
   "folder_id": "22b7eef6-8a96-4cb3-8723-d6af431cb4b4",
   "fs_path": null,
   "gradient": null,
   "icon": null,
   "icon_bg_color": null,
-  "id": "7ae99595-acc7-4b99-90e5-0c96bb6c7e97",
+  "id": "04f56d90-b815-4245-86bc-1b37b5915cb5",
   "is_component": false,
-  "locked": true,
-  "name": "Stable Diffusion - Huggingface",
+  "locked": false,
+  "name": "Generic Text Chatbot - OpenAI",
   "tags": null,
-  "updated_at": "2025-04-01T15:08:10+00:00",
+  "updated_at": "2025-04-01T14:41:12+00:00",
   "user_id": "14eb54df-204a-4ff6-92a2-7a89f817bede",
   "webhook": false
 }
