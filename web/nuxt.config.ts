@@ -14,4 +14,5 @@ export default defineNuxtConfig({
       },
       logLevel: 5,
   },
+
 })
