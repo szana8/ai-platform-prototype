@@ -11,12 +11,14 @@
         <div>
             <table class="w-full text-left">
                 <thead class="border-b border-gray-200">
-                    <th class="py-2">Name</th>
-                    <th class="py-2">Description</th>
-                    <th class="py-2">Link</th>
-                    <th class="py-2">Langflow ID</th>
-                    <th class="py-2">Enabled</th>
-                    <th class="py-2">Action</th>
+                    <tr>
+                        <th class="py-2">Name</th>
+                        <th class="py-2">Description</th>
+                        <th class="py-2">Link</th>
+                        <th class="py-2">Langflow ID</th>
+                        <th class="py-2">Enabled</th>
+                        <th class="py-2">Action</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr class="text-gray-600 items-center">

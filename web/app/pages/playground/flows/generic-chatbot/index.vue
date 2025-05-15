@@ -18,7 +18,7 @@ const systemPrompt = ref<string>('')
 // Default configuration
 const defaultOptions: ChatStreamOptions = {
     url: "http://localhost:8090/api/flow/run",
-    stream: false,
+    stream: isStreamEnabled.value,
     headers: {
         // Any additional default headers
     },
@@ -31,6 +31,8 @@ const submit = async () => {
 
     let request_prompt = prompt.value
     prompt.value = '';
+
+    console.log(isStreamEnabled.value)
 
     await sendMessage(
         request_prompt,
@@ -81,7 +83,7 @@ const handleCancelSystemPrompt = () => {
 
                 <div class="left-1/2 w-full">
                     <div class="relative max-w-3xl left-1/2 transform -translate-x-1/2 bottom-0">
-                        <ChatInput v-model="prompt" :is-stream-enabled="isStreamEnabled" :is-loading="isLoading"
+                        <ChatInput v-model="prompt" v-model:isStreamEnabled="isStreamEnabled" :is-loading="isLoading"
                             :setting-is-open="isSettingsOpen" @submit="submit" @toggle-setup="toogleSetup" />
                     </div>
                 </div>

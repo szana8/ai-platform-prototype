@@ -32,7 +32,7 @@ const submit = async () => {
 
     await sendMessage(
         request_prompt,
-        '7ae99595-acc7-4b99-90e5-0c96bb6c7e97',
+        'text-to-image',
         { stream: isStreamEnabled.value },
         {
             systemPrompt: systemPrompt.value,

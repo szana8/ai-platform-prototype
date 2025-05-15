@@ -9,38 +9,26 @@ definePageMeta({
 const result = ref('');  // Store the result
 
 const send = async () => {
-    try {
-        const fetchOptions: RequestInit = {
-            method: 'POST',
+    const sanctumFetch = useSanctumClient()
+    const response = await sanctumFetch<ReadableStream, 'stream'>(
+        'http://localhost:8090/api/test',
+        {
             headers: {
-                'Content-Type': 'application/json',
+                Accept: 'text/event-stream',
             },
-            body: JSON.stringify({
-                input_value: "",
-                output_type: "chat",
-                input_type: "chat",
-            })
-        };
+            responseType: 'stream',
+        },
+    )
 
-        // Fetch data using useSanctumFetch
-        const response = await useSanctumFetch("http://localhost:8090/api/stream", fetchOptions);
+    const reader = response.pipeThrough(new TextDecoderStream()).getReader()
 
-        // Access the `data` field and get its `.value` property
-        const streamContent = response.data.value;
+    while (true) {
+        const { value, done } = await reader.read()
 
-        if (!streamContent) {
-            console.error("No stream content found.");
-            return;
-        }
+        if (done)
+            break
 
-        // Append the content to the result variable
-        result.value = streamContent;
-
-        // Alternatively, you could do something more sophisticated here to manage content
-        console.log('Stream content:', streamContent);
-
-    } catch (fetchError) {
-        console.error('Error:', fetchError);
+        console.log('Received:', value)
     }
 }
 

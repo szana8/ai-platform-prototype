@@ -9,6 +9,6 @@ class RequestController extends Controller
 {
     public function __invoke(CreateRequest $request, CreateNewRequest $createNewRequest): mixed
     {
-        return $createNewRequest->handle($request)->json();
+        return $createNewRequest->handle($request);
     }
 }

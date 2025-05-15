@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use Illuminate\Support\Facades\Log;
 use Psr\Http\Message\StreamInterface;
 
 class ProcessStreamHelper
@@ -15,12 +16,12 @@ class ProcessStreamHelper
         $buffer = '';
 
         $jsonObjects = [];
-
+        
         while (!$body->eof()) {
             $chunk = $body->read(256);
             $buffer .= $chunk;
 
-            // Split the buffer by newline as a delimiter
+            // Split the buffer by newline as a delimiter   
             while (($pos = strpos($buffer, "\n")) !== false) {
                 $json = substr($buffer, 0, $pos);
                 $buffer = substr($buffer, $pos + 1);
@@ -31,6 +32,8 @@ class ProcessStreamHelper
                 // Check if JSON decoding was successful
                 // if so, pass the object to the handler
                 if ($data !== null) {
+                    Log::info("Response chunk", ['chunk' => $data]);
+
                     $handleJsonObject($data);
                     $jsonObjects[] = $data;
                 } else {
@@ -45,6 +48,9 @@ class ProcessStreamHelper
         // Process any remaining data in the buffer
         if (!empty($buffer)) {
             $data = json_decode($buffer, true);
+
+            Log::info("Response chunk", ['chunk' => $data]);
+
             if ($data !== null) {
                 $handleJsonObject($data);
                 $jsonObjects[] = $data;

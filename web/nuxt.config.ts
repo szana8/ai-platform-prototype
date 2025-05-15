@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
-  ssr: true,
+  ssr: false,
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss', 'nuxt-auth-sanctum', 'nuxt-highcharts'],
 
@@ -16,5 +16,4 @@ export default defineNuxtConfig({
       },
       logLevel: 5,
   },
-
 })

@@ -5,7 +5,8 @@
         }
     ],
     "settings": {
-        "Laravel.basePath": "api",
-        "Laravel.phpCommand": ""
+        "Laravel.basePath": "/var/www",
+        "Laravel.phpCommand": "docker exec api {code}",
+        "Laravel.phpEnvironment": "auto"
     }
 }

@@ -33,10 +33,6 @@ watch(() => props.modelValue, (newValue) => {
     localPrompt.value = newValue;
 });
 
-watch(() => props.isStreamEnabled, (newValue) => {
-    localStreamEnabled.value = newValue;
-});
-
 // Sync local state with parent
 watch(localPrompt, (newValue) => {
     emit('update:modelValue', newValue);
@@ -115,10 +111,10 @@ const handleDragLeave = () => {
                 <!-- Stream Toggle -->
                 <div>
                     <label class="inline-flex items-center cursor-pointer">
-                        <span class="mr-2 text-xs text-gray-600">Stream</span>
+                        <span class="mr-2 text-xs text-gray-600 dark:text-gray-200">Stream</span>
                         <input type="checkbox" v-model="localStreamEnabled" class="sr-only peer">
                         <div
-                            class="relative w-8 h-4 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-4 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-green-600">
+                            class="relative w-8 h-4 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-200 peer-checked:after:translate-x-4 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] dark:after:bg-gray-700 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all dark:border-gray-600 peer-checked:bg-green-600">
                         </div>
                     </label>
                 </div>

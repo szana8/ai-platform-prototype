@@ -36,29 +36,35 @@ export function useChatStream(defaultOptions: ChatStreamOptions) {
    * @param botMessage The bot message object to update
    */
   const processStreamResponse = async (response: any, botMessage: Message): Promise<void> => {
-    const reader = response.data.value.getReader();
-    const decoder = new TextDecoder();
+    const reader = response.pipeThrough(new TextDecoderStream()).getReader()
+    let buffer = ''
 
     try {
       while (true) {
         const { value, done } = await reader.read();
         if (done) break;
+        
+        let parts = value.split('\n\n')
+        buffer = parts.pop() // last incomplete message stays in buffer
 
-        const decodedText = decoder.decode(value, { stream: true });
-        const jsonChunks = decodedText.trim().split("\n");
-
-        for (const chunk of jsonChunks) {
-          if (!chunk) continue;
-
-          try {
-            const parsedData = JSON.parse(chunk);
-            if (parsedData.event === "token" && parsedData.data?.chunk) {
-              botMessage.text += parsedData.data.chunk === "\n" ? "<br />" : parsedData.data.chunk;
+        for (const part of parts) {
+          const lines = part.split('\n')
+          for (const line of lines) {
+            if (line.startsWith('data:')) {
+              const data = line.replace('data:', '').trim()
+              if (data.startsWith('<')) {
+                continue
+              }
+              const jsonData = JSON.parse(data)
+              if (jsonData.text == "\n") {
+                botMessage.text += "<br />";
+              } else {
+                botMessage.text += jsonData.text;
+              }
+             
               botMessage.text = formatCodeBlocks(botMessage.text);
-              messages.value = [...messages.value]; // Trigger reactivity
+              messages.value = [...messages.value];
             }
-          } catch (e) {
-            console.error("Error parsing JSON chunk:", e, chunk);
           }
         }
       }
@@ -79,7 +85,9 @@ export function useChatStream(defaultOptions: ChatStreamOptions) {
       sender: 'bot', 
       imageUrl: null 
     };
-    
+
+    console.log("Response: ", responseData)
+
     // Extract text response
     botMessage.text = responseData.outputs?.[0]?.outputs?.[0]?.results?.message?.text || 'No response received.';
     botMessage.text = formatCodeBlocks(botMessage.text).replace(/\n/g, '<br>');
@@ -118,20 +126,19 @@ export function useChatStream(defaultOptions: ChatStreamOptions) {
     flowId: string, 
     options: ChatStreamOptions, 
     tweaks?: Record<string, string>
-  ): { url: string, fetchOptions: RequestInit } => {
+  ): { url: string, fetchOptions: any } => {
     // Prepare URL
     let langflowUrl = options.url;
-    if (options.stream) {
-      langflowUrl += "?stream=true";
-    }
     
     // Prepare fetch options
-    const fetchOptions: RequestInit = {
+    const fetchOptions: any = {
       method: options.method || 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': options.stream ? 'text/event-stream' : 'application/json',
         ...(options.headers || {})
       },
+      responseType: options.stream ? 'stream' : '',
       body: JSON.stringify({
         body: {
           input_value: userInput,
@@ -140,6 +147,7 @@ export function useChatStream(defaultOptions: ChatStreamOptions) {
         },
         tweaks: tweaks,
         flow_id: flowId,
+        stream: options.stream,
       })
     };
     
@@ -176,18 +184,21 @@ export function useChatStream(defaultOptions: ChatStreamOptions) {
     try {
       // Prepare and send request
       const { url, fetchOptions } = prepareRequest(userInput, flowId, options, tweaks);
-      const response = await useSanctumFetch(url, fetchOptions);
-
-      if (!response.data) {
-        throw new Error("No response body");
-      }
 
       if (options.stream === false) {
+        const response = await useSanctumFetch(url, fetchOptions);
+        console.log("Stream disabled")
+        if (!response.data) {
+          throw new Error("No response body");
+        }
         // Handle non-streaming response
         const responseData = await response.data.value;
         const botMessage = processNonStreamResponse(responseData);
         messages.value.push(botMessage);
       } else {
+        console.log('Stream enabled')
+        const sanctumFetch = useSanctumClient()
+        const response = await sanctumFetch<ReadableStream, 'stream'>(url, fetchOptions)
         // Handle streaming response
         const botMessage: Message = { text: '', sender: 'bot', imageUrl: null };
         messages.value.push(botMessage);
