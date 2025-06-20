@@ -2,6 +2,7 @@
 export interface Message {
   text: string;
   sender: 'User' | 'bot';
+  imageUrl: string | null,
 }
 
 // Define options interface for more flexibility

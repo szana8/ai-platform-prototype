@@ -3,5 +3,10 @@
         {
             "path": "."
         }
-    ]
+    ],
+    "settings": {
+        "Laravel.basePath": "/var/www",
+        "Laravel.phpCommand": "docker exec api {code}",
+        "Laravel.phpEnvironment": "auto"
+    }
 }

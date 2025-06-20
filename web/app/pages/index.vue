@@ -42,7 +42,8 @@ const logos = [
             class="relative text-center w-full mx-auto bg-[url('/assets/banner.png')] bg-cover flex h-[800px] items-center">
             <div class="container mx-auto">
                 <div class="w-1/3 text-left space-y-4">
-                    <div class="text-6xl font-bold">Best in class AI-powered Platform for App Personalization</div>
+                    <div class="text-6xl font-bold dark:text-gray-700">Best in class AI-powered Platform for App
+                        Personalization</div>
                     <div class="text-lg text-gray-500">Deliver personalized offers to your users by leveraging our
                         AI-powered Platform as a Service for the most important monetization use cases.</div>
                     <button
@@ -79,6 +80,47 @@ const logos = [
             </div>
         </section>
 
-        <section class="bg-gray-100 h-[400px] mt-20"></section>
+        <section class="bg-gray-100 mt-20 dark:bg-transparent">
+            <footer class="bg-gray-900 text-gray-300 py-10">
+                <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+                    <!-- Services Column -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-3">AI Services</h3>
+                        <ul>
+                            <li><a href="#" class="hover:text-blue-400">Diarization</a></li>
+                            <li><a href="#" class="hover:text-blue-400">Text-to-Image</a></li>
+                            <li><a href="#" class="hover:text-blue-400">Speech Recognition</a></li>
+                            <li><a href="#" class="hover:text-blue-400">AI Chatbots</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Links Column -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-3">Useful Links</h3>
+                        <ul>
+                            <li><a href="#" class="hover:text-blue-400">Pricing</a></li>
+                            <li><a href="#" class="hover:text-blue-400">API Docs</a></li>
+                            <li><a href="#" class="hover:text-blue-400">Support</a></li>
+                            <li><a href="#" class="hover:text-blue-400">Blog</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Company Column -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-3">Company</h3>
+                        <ul>
+                            <li><a href="#" class="hover:text-blue-400">About Us</a></li>
+                            <li><a href="#" class="hover:text-blue-400">Careers</a></li>
+                            <li><a href="#" class="hover:text-blue-400">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-blue-400">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="text-center text-gray-500 text-xs mt-6">
+                    &copy; 2025 AI Solutions Inc. All rights reserved.
+                </div>
+            </footer>
+        </section>
     </div>
 </template>

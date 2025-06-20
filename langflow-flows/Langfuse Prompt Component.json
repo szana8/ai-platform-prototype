@@ -1,0 +1,197 @@
+{
+  "description": "Use as a template to create your own component.",
+  "user_id": "2ae95cc6-ab16-48e2-bc54-e2dcfbad6b8f",
+  "endpoint_name": null,
+  "id": "20d5c981-b183-4e44-badf-659d46b63735",
+  "tags": null,
+  "locked": false,
+  "gradient": null,
+  "folder_id": "f0893526-c259-4d1c-811c-0fd99f63956d",
+  "is_component": true,
+  "data": {
+    "edges": [],
+    "nodes": [
+      {
+        "data": {
+          "node": {
+            "template": {
+              "_type": "Component",
+              "code": {
+                "type": "code",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "multiline": true,
+                "value": "# from langflow.field_typing import Data\nfrom langflow.custom import Component\nfrom langflow.io import MessageTextInput, Output\nfrom langflow.schema import Data\n\nfrom langfuse import Langfuse\nfrom langfuse.callback import CallbackHandler\n\n\nclass CustomComponent(Component):\n    display_name = \"Langfuse Prompt Component\"\n    description = \"Use as a template to create your own component.\"\n    documentation: str = \"https://docs.langflow.org/components-custom-components\"\n    icon = \"langfuse\"\n    name = \"LangfusePropmpComponent\"\n\n    inputs = [\n        MessageTextInput(\n            name=\"prompt_name\",\n            display_name=\"Prompt Name\",\n            info=\"Languse Prompt Name\",\n        ),\n        MessageTextInput(\n            name=\"host\",\n            display_name=\"Langfuse Host\",\n            info=\"Languse Host\",\n        ),\n        MessageTextInput(\n            name=\"public_key\",\n            display_name=\"Langfuse Public Key\",\n            info=\"Languse Public Key\",\n        ),\n        MessageTextInput(\n            name=\"secret_key\",\n            display_name=\"Langfuse Secret Key\",\n            info=\"Languse Secret Key\",\n        ),\n    ]\n        \n        \n\n    outputs = [\n        Output(display_name=\"Output\", name=\"output\", method=\"build_output\"),\n    ]\n\n    def build_output(self) -> Message:\n        langfuse_config = {\n            'public_key': self.public_key,\n            'secret_key': self.secret_key,\n            'host': self.host\n        }\n        \n        \n        langfuse_handler = CallbackHandler(**langfuse_config)\n        langfuse = Langfuse(**langfuse_config)\n        \n        prompt = langfuse.get_prompt(self.prompt_name)\n        \n        message = Message(\n            text=prompt.prompt,\n        )\n        self.status = prompt.prompt\n        return message\n",
+                "fileTypes": [],
+                "file_path": "",
+                "password": false,
+                "name": "code",
+                "advanced": true,
+                "dynamic": true,
+                "info": "",
+                "load_from_db": false,
+                "title_case": false
+              },
+              "host": {
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "list_add_label": "Add More",
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "host",
+                "value": "https://cloud.langfuse.com",
+                "display_name": "Langfuse Host",
+                "advanced": false,
+                "input_types": [
+                  "Message"
+                ],
+                "dynamic": false,
+                "info": "Languse Host",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "MessageTextInput"
+              },
+              "prompt_name": {
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "list_add_label": "Add More",
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "prompt_name",
+                "value": "test-prompt",
+                "display_name": "Prompt Name",
+                "advanced": false,
+                "input_types": [
+                  "Message"
+                ],
+                "dynamic": false,
+                "info": "Languse Prompt Name",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "MessageTextInput"
+              },
+              "public_key": {
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "load_from_db": true,
+                "list": false,
+                "list_add_label": "Add More",
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "public_key",
+                "value": "LANGFUSE_PUBLIC_KEY",
+                "display_name": "Langfuse Public Key",
+                "advanced": false,
+                "input_types": [
+                  "Message"
+                ],
+                "dynamic": false,
+                "info": "Languse Public Key",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "MessageTextInput"
+              },
+              "secret_key": {
+                "tool_mode": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "load_from_db": true,
+                "list": false,
+                "list_add_label": "Add More",
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "secret_key",
+                "value": "LANGFUSE_SECRET_KEY",
+                "display_name": "Langfuse Secret Key",
+                "advanced": false,
+                "input_types": [
+                  "Message"
+                ],
+                "dynamic": false,
+                "info": "Languse Secret Key",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "MessageTextInput"
+              }
+            },
+            "description": "Use as a template to create your own component.",
+            "icon": "langfuse",
+            "base_classes": [
+              "Message"
+            ],
+            "display_name": "Langfuse Prompt Component",
+            "documentation": "https://docs.langflow.org/components-custom-components",
+            "minimized": false,
+            "custom_fields": {},
+            "output_types": [],
+            "pinned": false,
+            "conditional_paths": [],
+            "frozen": false,
+            "outputs": [
+              {
+                "types": [
+                  "Message"
+                ],
+                "selected": "Message",
+                "name": "output",
+                "hidden": null,
+                "display_name": "Output",
+                "method": "build_output",
+                "value": "__UNDEFINED__",
+                "cache": true,
+                "required_inputs": null,
+                "allows_loop": false,
+                "tool_mode": true
+              }
+            ],
+            "field_order": [
+              "prompt_name",
+              "host",
+              "public_key",
+              "secret_key"
+            ],
+            "beta": false,
+            "legacy": false,
+            "edited": true,
+            "metadata": {},
+            "tool_mode": false,
+            "lf_version": "1.2.0",
+            "official": false
+          },
+          "showNode": true,
+          "type": "LangfusePropmpComponent",
+          "id": "LangfusePropmpComponent-k6Mct"
+        },
+        "id": "LangfusePropmpComponent-k6Mct",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "type": "genericNode"
+      }
+    ],
+    "viewport": {
+      "x": 1,
+      "y": 1,
+      "zoom": 1
+    }
+  },
+  "updated_at": "2025-03-28T08:21:42+00:00",
+  "icon": null,
+  "name": "Langfuse Prompt Component",
+  "icon_bg_color": null,
+  "webhook": false
+}
